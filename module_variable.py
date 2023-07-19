@@ -4,6 +4,10 @@ regex_numero = "[0-9]"
 image_64_encode = ""
 var1 = False
 var2 = False
+fecha_seteada = ""
+file_origen = ""
+ruta_destino = ""
+contador_archivos_cargados = 0
 
 aeropuertos = (
     "AEP",
@@ -68,5 +72,6 @@ aeropuertos = (
 
 sistema = ("ILS","VOR","LI")
 
-folio = ("ILS LH", "ILS PARAMETROS", "DME ILS PARAMETROS", "VOR LH","DME VOR PARAMETROS","VOR PARAMETROS I","VOR PARAMETROS II", "LI LH", "LI PARAMETROS","VARIOS")
+folio = ("ILS LH", "ILS PARAMETROS", "DME ILS PARAMETROS", "VOR LH","DME VOR PARAMETROS","VOR PARAMETROS I","VOR PARAMETROS II", "LI LH", "LI PARAMETROS")
 
+extension = (".pdf",".jpg",".jfif",".csv",".xlsx",".doc")
