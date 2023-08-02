@@ -1,0 +1,67 @@
+file_origen = ""
+ruta_destino = ""
+#contador_archivos_cargados 
+
+aeropuertos = (
+    "AEP",
+    "BAR",
+    "BCA",
+    "CAT",
+    "CBA",
+    "CHP",
+    "CRR",
+    "CRV",
+    "DIL",
+    "DOZ",
+    "DRY",
+    "ECA",
+    "ERE",
+    "ESQ",
+    "EZE RWY 11 29",  # 2-1-23
+    "EZE RWY 17 35",  # 2-1-23
+    "EZE VOR",  # 2-1-23
+    "FDO",
+    "FSA",
+    "GAL",
+    "GBE",
+    "GNR",
+    "GPI",
+    "GRA",
+    "GUA",
+    "IGU",
+    "JUA",
+    "JUJ",
+    "LAR",
+    "LYE",
+    "MDP",
+    "MJZ",
+    "MLG",
+    "NEU",
+    "NIN",
+    "OEL",
+    "OSA",
+    "PAL",
+    "PAR",
+    "POS",
+    "PTA",
+    "ROS",
+    "RTA",
+    "RYD",
+    "SAL",
+    "SDE",
+    "SIS",
+    "SJU",
+    "SNT",
+    "SRA",
+    "SVO",
+    "TRC",
+    "TRE",
+    "TRH",
+    "TUC",
+    "UIS",
+    "USH",
+    "VIE",
+)
+sistema = "ILS","LI","VOR"
+folio = "ILS LH","ILS PARAMETROS","DME ILS PARAMETROS","LI LH","LI PARAMETROS","VOR LH","VOR PARAMETROS I","DME VOR PARAMETROS","VOR PARAMETROS II"
+extension = ".pdf",".jpg",".tiff","xlsx","csv","docx"

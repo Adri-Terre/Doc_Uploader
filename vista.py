@@ -6,8 +6,11 @@ from PIL import Image, ImageTk
 import module_variable as mod_var
 import controller
 from tkinter import ttk  # para la barra de progreso
+from getpass import getuser
 
+#C:\Users\aterreni\OneDrive - EANA S.E\Historiales y Libros Parámetros
 
+contador_archivos_cargados = 0
 
 def autor():
 
@@ -38,7 +41,7 @@ def ruta_destino():
     print (ruta)
     mod_var.ruta_destino = ruta
     w6 = Label(master, text= ruta, foreground="purple")
-    w6.place(x=100, y=80)
+    w6.place(x=115, y=80)
 
 def file_origen():
 
@@ -48,13 +51,13 @@ def file_origen():
     
     w8 = Label(master, text= file, foreground="blue")
     w8.place(x=130, y=50)
-    
+   
 
 def call_exportar_1():
 
     """esta funcion, a traves del controller, exporta los datos de la agenda en .pdf, .csv"""
 
-    #controller.control_exportar("doc_airport")
+
 
 def upload():
     controller.upload()
@@ -178,13 +181,15 @@ nro_frame.place(x=580, y=180, width=80, height=60)
 
 # -------------------------------------------------------------------------------
 
-extension = LabelFrame(master, text="Extensión", bd=2)
-extension.place(x=670, y=180, width=90, height=60)
-list_extension = mod_var.extension
-combo_extension = ttk.Combobox(
-    state="readonly", values=list_extension,width=5
-)
-combo_extension.place(x=690, y=200)
+#extension = LabelFrame(master, text="Extensión", bd=2)
+#extension.place(x=670, y=180, width=90, height=60)
+
+#list_extension = mod_var.extension
+
+#combo_extension = ttk.Combobox(
+#    state="readonly", values=list_extension,width=5
+#)
+#combo_extension.place(x=690, y=200)
 
 
 folio_input = Entry(master)
@@ -193,10 +198,10 @@ folio_input.place(x=593, y=200)
 folio_input.focus_set()
 
 w1 = Label(master, text="Archivos Cargados: ", foreground="black")
-w1.place(x=693, y=275)
+w1.place(x=693, y=250)
 
 w2 = Label(master, text="-", foreground="red")
-w2.place(x=820, y=275)
+w2.place(x=820, y=250)
 
 w3 = Label(master, text="Ultimo archivo cargado: ", foreground="black")
 w3.place(x=10, y=250)
@@ -218,5 +223,14 @@ load = Image.open("img_miniatura.png")
 mod_var.render = ImageTk.PhotoImage(load)
 w5 = Label(master, image=mod_var.render)
 w5.place(x=300, y=20)
+
+#usuario = getuser()
+#usuario = usuario.lower()
+#print(usuario)
+
+#print("C:\Users\aterreni\OneDrive - EANA S.E\Historiales y Libros Parámetros")
+#mod_var.ruta_destino = ruta
+#w6 = Label(master, text= ruta, foreground="purple")
+#w6.place(x=100, y=80)
 
 master.mainloop()
