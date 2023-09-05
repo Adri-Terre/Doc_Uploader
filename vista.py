@@ -1,14 +1,11 @@
-#from msilib.schema import ComboBox
 from tkinter import *
 from tkinter.messagebox import *
 import PIL
 from PIL import Image, ImageTk
 import module_variable as mod_var
 import controller
-from tkinter import ttk  # para la barra de progreso
+from tkinter import ttk  
 from getpass import getuser
-
-#C:\Users\aterreni\OneDrive - EANA S.E\Historiales y Libros Parámetros
 
 contador_archivos_cargados = 0
 
@@ -28,35 +25,28 @@ def ruta_origen():
     """esta funcion, a traves del controller, inserta la documentacion a analizar"""
     ruta = controller.ruta()
     print (ruta)
-    
-    #w6 = Label(master, text= ruta, foreground="blue")
-    #w6.place(x=50, y=50)
-    
-    #carpeta = folder_selected + "/" + carpeta_sitio + "/" + anio_seleccionado
+
 
 def ruta_destino():
-
+    global w6
     """esta funcion, a traves del controller, inserta la documentacion a analizar"""
     ruta = controller.ruta()
     print (ruta)
     mod_var.ruta_destino = ruta
+    if (w6.winfo_ismapped()) == True:
+        w6.destroy()
     w6 = Label(master, text= ruta, foreground="purple")
     w6.place(x=115, y=80)
 
 def file_origen():
-
+    global w8
+    
     """esta funcion, a traves del controller, inserta la documentacion a analizar"""
     file = controller.file()
     print (file)
     
     w8 = Label(master, text= file, foreground="blue")
     w8.place(x=130, y=50)
-   
-
-def call_exportar_1():
-
-    """esta funcion, a traves del controller, exporta los datos de la agenda en .pdf, .csv"""
-
 
 
 def upload():
@@ -65,10 +55,12 @@ def upload():
 def calendario():
     
     from tkcalendar import Calendar, DateEntry
+    
     import datetime
     import module_variable as mod_var
     
     def print_sel():
+        global w7
         print(cal.selection_get())
         w7 = Label(master, text=cal.selection_get() )
         w7.place(x=30, y=135)
@@ -88,7 +80,8 @@ def calendario():
     maxdate = today + datetime.timedelta(weeks=520)
     print(mindate, maxdate)
     
-    cal = Calendar(win_calendario, font="Arial 14", selectmode='day', locale='en_US',
+ 
+    cal = Calendar(win_calendario, font="Arial 14",selectmode='day', locale='en_US',
                    mindate=mindate, maxdate=maxdate, disabledforeground='red',
                    cursor="hand1", year=anio, month=mes, day=dia)
     cal.pack(fill="both", expand=True)
@@ -103,16 +96,11 @@ fecha.place(x=10, y=110, width=165, height=60)
 
 """ Aquí se crea la pantalla principal """
 
-master.geometry("870x300")
+master.geometry("870x320")
 master.title("DOC Uploader")
 menu = Menu(master)
 master.config(menu=menu)
 filemenu = Menu(menu)
-# --------Archivo--------------------------
-menu.add_cascade(label="Archivo", menu=filemenu)
-filemenu.add_command(label="Exportar existentes", command=call_exportar_1)
-filemenu.add_separator()
-
 
 # ---------Acerca de-----------------------
 acerca_de = Menu(menu)
@@ -130,8 +118,15 @@ Button(
 ).place(x=580, y=15)
 
 
-Button(master, text="Calendario", width=22, command=calendario, anchor=CENTER).place(
-    x=280, y=120
+load = Image.open("icon_calen.png")
+miniatura_calen = (120, 30)
+load.thumbnail(miniatura_calen)
+load.save("img_miniatura_calen.png")
+load = Image.open("img_miniatura_calen.png")
+image_calen = ImageTk.PhotoImage(load)
+
+Button(master, image=image_calen,width=52, command=calendario, anchor=CENTER).place(
+    x=200, y=120
 )
 
 Button(master, text="Upload", width=10, command=upload, anchor=CENTER).place(
@@ -180,34 +175,22 @@ nro_frame = LabelFrame(master, text="Nro. folio", bd=2)
 nro_frame.place(x=580, y=180, width=80, height=60)
 
 # -------------------------------------------------------------------------------
-
-#extension = LabelFrame(master, text="Extensión", bd=2)
-#extension.place(x=670, y=180, width=90, height=60)
-
-#list_extension = mod_var.extension
-
-#combo_extension = ttk.Combobox(
-#    state="readonly", values=list_extension,width=5
-#)
-#combo_extension.place(x=690, y=200)
-
-
 folio_input = Entry(master)
 folio_input.configure(width=8)
 folio_input.place(x=593, y=200)
 folio_input.focus_set()
 
 w1 = Label(master, text="Archivos Cargados: ", foreground="black")
-w1.place(x=693, y=250)
+w1.place(x=693, y=270)
 
 w2 = Label(master, text="-", foreground="red")
-w2.place(x=820, y=250)
+w2.place(x=820, y=270)
 
 w3 = Label(master, text="Ultimo archivo cargado: ", foreground="black")
-w3.place(x=10, y=250)
+w3.place(x=10, y=270)
 
-w4 = Label(master, text= "-", foreground="red")
-w4.place(x=180, y=250)
+w9 = Label(master, text= "-", foreground="red")
+w9.place(x=180, y=270)
 
 w10 = Label(master, text="Archivo seleccionado: ", foreground="black")
 w10.place(x=3, y=50)
@@ -224,13 +207,12 @@ mod_var.render = ImageTk.PhotoImage(load)
 w5 = Label(master, image=mod_var.render)
 w5.place(x=300, y=20)
 
-#usuario = getuser()
-#usuario = usuario.lower()
-#print(usuario)
+usuario = getuser()
+usuario = usuario.lower()
+print(usuario)
 
-#print("C:\Users\aterreni\OneDrive - EANA S.E\Historiales y Libros Parámetros")
-#mod_var.ruta_destino = ruta
-#w6 = Label(master, text= ruta, foreground="purple")
-#w6.place(x=100, y=80)
+mod_var.ruta_destino= "C"+ ":" + "/" + "Users/" + usuario + "/" + "OneDrive - EANA S.E/Historiales y Libros Parámetros" 
+w6 = Label(master, text= mod_var.ruta_destino, foreground="purple")
+w6.place(x=115, y=80)
 
 master.mainloop()

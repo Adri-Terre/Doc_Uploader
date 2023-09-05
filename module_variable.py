@@ -1,6 +1,8 @@
 file_origen = ""
 ruta_destino = ""
-#contador_archivos_cargados 
+regex_numero = "[0-9]"
+fecha_seteada = ""
+var1 = False
 
 aeropuertos = (
     "AEP",
@@ -62,6 +64,5 @@ aeropuertos = (
     "USH",
     "VIE",
 )
-sistema = "ILS","LI","VOR"
-folio = "ILS LH","ILS PARAMETROS","DME ILS PARAMETROS","LI LH","LI PARAMETROS","VOR LH","VOR PARAMETROS I","DME VOR PARAMETROS","VOR PARAMETROS II"
-extension = ".pdf",".jpg",".tiff","xlsx","csv","docx"
+sistema = "ILS","LI","VOR","NDB"
+folio = "LH","PARAMETROS","PARAMETROS I","PARAMETROS II","DME ILS PARAMETROS","DME VOR PARAMETROS","CHECK LIST I","CHECK LIST II","POUT","GROUND CHECK",
