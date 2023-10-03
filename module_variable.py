@@ -1,8 +1,10 @@
 file_origen = ""
 ruta_destino = ""
+ruta_destino_excel = ""
 regex_numero = "[0-9]"
 fecha_seteada = ""
-var1 = False
+checkbox = False
+checkbox_falla = False
 
 aeropuertos = (
     "AEP",
@@ -19,9 +21,9 @@ aeropuertos = (
     "ECA",
     "ERE",
     "ESQ",
-    "EZE RWY 11 29",  # 2-1-23
-    "EZE RWY 17 35",  # 2-1-23
-    "EZE VOR",  # 2-1-23
+    "EZE RWY 11 29",  
+    "EZE RWY 17 35",  
+    "EZE VOR",  
     "FDO",
     "FSA",
     "GAL",
@@ -55,6 +57,7 @@ aeropuertos = (
     "SJU",
     "SNT",
     "SRA",
+    "SRC",
     "SVO",
     "TRC",
     "TRE",
@@ -66,3 +69,4 @@ aeropuertos = (
 )
 sistema = "ILS","LI","VOR","NDB"
 folio = "LH","PARAMETROS","PARAMETROS I","PARAMETROS II","DME ILS PARAMETROS","DME VOR PARAMETROS","CHECK LIST I","CHECK LIST II","POUT","GROUND CHECK",
+region = "FIR CBA","FIR CRV","FIR DOZ","FIR EZE","FIR SIS"

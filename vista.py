@@ -8,6 +8,7 @@ from tkinter import ttk
 from getpass import getuser
 
 contador_archivos_cargados = 0
+contador_registros_cargados = 0
 
 def autor():
 
@@ -96,7 +97,7 @@ fecha.place(x=10, y=110, width=165, height=60)
 
 """ Aquí se crea la pantalla principal """
 
-master.geometry("870x320")
+master.geometry("870x410")
 master.title("DOC Uploader")
 menu = Menu(master)
 master.config(menu=menu)
@@ -181,22 +182,37 @@ folio_input.place(x=593, y=200)
 folio_input.focus_set()
 
 w1 = Label(master, text="Archivos Cargados: ", foreground="black")
-w1.place(x=693, y=270)
+w1.place(x=693, y=310)
 
 w2 = Label(master, text="-", foreground="red")
-w2.place(x=820, y=270)
+w2.place(x=820, y=310)
 
 w3 = Label(master, text="Ultimo archivo cargado: ", foreground="black")
-w3.place(x=10, y=270)
+w3.place(x=10, y=310)
 
 w9 = Label(master, text= "-", foreground="red")
-w9.place(x=180, y=270)
+w9.place(x=180, y=310)
 
 w10 = Label(master, text="Archivo seleccionado: ", foreground="black")
 w10.place(x=3, y=50)
 
 w11 = Label(master, text="Repositorio destino: ", foreground="black")
 w11.place(x=3, y=80)
+
+w12 = Label(master, text="Ultimo registro cargado: ", foreground="black")
+w12.place(x=10, y=360)
+
+w13 = Label(master, text= "-", foreground="red")
+w13.place(x=180, y=360)
+
+w14 = Label(master, text="Registros cargados: ", foreground="black")
+w14.place(x=693, y=360)
+
+w15 = Label(master, text="-", foreground="red")
+w15.place(x=820, y=360)
+
+w16 = Label(master, text="Fallas", foreground="black")
+w16.place(x=695, y=205)
 
 load = Image.open("logo.png")
 miniatura = (160, 120)
@@ -212,7 +228,34 @@ usuario = usuario.lower()
 print(usuario)
 
 mod_var.ruta_destino= "C"+ ":" + "/" + "Users/" + usuario + "/" + "OneDrive - EANA S.E/Historiales y Libros Parámetros" 
+mod_var.ruta_destino_excel= "C"+ ":" + "/" + "Users/" + usuario + "/" + "OneDrive - EANA S.E\Reportes e Informes Técnicos\DNAV Checklist 1"
 w6 = Label(master, text= mod_var.ruta_destino, foreground="purple")
 w6.place(x=115, y=80)
+
+mod_var.checkbox = BooleanVar()
+mod_var.checkbox_falla = BooleanVar()
+
+anexo_frame = LabelFrame(master, text="Anexo VIII", bd=2)
+anexo_frame.place(x=10, y=250, width=180, height=60)
+
+list_anexo = mod_var.region
+combo_anexo = ttk.Combobox(
+    state="readonly", values=list_anexo,width=18
+)
+combo_anexo.place(x=40, y=270)
+
+Checkbutton(
+    master,
+    onvalue=1,
+    offvalue=0,
+    variable=mod_var.checkbox,
+    ).place(x=12, y=270)
+
+Checkbutton(
+    master,
+    onvalue=1,
+    offvalue=0,
+    variable=mod_var.checkbox_falla,
+    ).place(x=670, y=200)
 
 master.mainloop()
