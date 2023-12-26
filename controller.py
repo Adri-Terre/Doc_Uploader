@@ -21,6 +21,7 @@ def file():
     return file_selected
 
 def upload():
+    import psutil
     from module_variable import file_origen, ruta_destino,aeropuertos
     from module_variable import regex_numero,fecha_seteada
     import os, re, errno
@@ -110,6 +111,51 @@ def upload():
                     
             
             try:
+                
+                match extension_archivo:
+
+                    case ".pdf":
+                        proc= "Acrobat.exe" in (i.name() for i in psutil.process_iter()) 
+                        if proc == True:
+                            os.system(f"taskkill /im Acrobat.exe /f")
+                    case ".jpg":
+                        proc= "PhotosApp.exe" in (i.name() for i in psutil.process_iter()) 
+                        if proc == True:
+                            os.system(f"taskkill /im PhotosApp.exe /f")
+                    case ".png":
+                        proc= "PhotosApp.exe" in (i.name() for i in psutil.process_iter()) 
+                        if proc == True:
+                            os.system(f"taskkill /im PhotosApp.exe /f")
+                    case ".xslx":  
+                        proc= "EXCEL.EXE" in (i.name() for i in psutil.process_iter()) 
+                        if proc == True:
+                            os.system(f"taskkill /im EXCEL.EXE /f")
+                    case ".doc":            
+                        proc= "WINWORD.EXE" in (i.name() for i in psutil.process_iter()) 
+                        if proc == True:
+                            os.system(f"taskkill /im WINWORD.EXE /f")        
+                """
+                if (extension_archivo == ".pdf"):
+                    proc= "Acrobat.exe" in (i.name() for i in psutil.process_iter()) 
+                    if proc == True:
+                        os.system(f"taskkill /im Acrobat.exe /f")
+                
+                if (extension_archivo == ".jpg")or (extension_archivo == ".png")or(extension_archivo == ".tiff"):
+                    proc= "PhotosApp.exe" in (i.name() for i in psutil.process_iter()) 
+                    if proc == True:
+                        os.system(f"taskkill /im PhotosApp.exe /f")
+                
+                if (extension_archivo == ".xslx"):
+                    proc= "EXCEL.EXE" in (i.name() for i in psutil.process_iter()) 
+                    if proc == True:
+                        os.system(f"taskkill /im EXCEL.EXE /f")
+                
+                if (extension_archivo == ".doc"):
+                    proc= "WINWORD.EXE" in (i.name() for i in psutil.process_iter()) 
+                    if proc == True:
+                        os.system(f"taskkill /im WINWORD.EXE /f")
+                """
+                
                 os.rename(file_origen, archivo_renombrado)
                 
                 print ("Se reemplaza el archivo: " + str(file_origen) + "por: "+str(archivo_renombrado))
@@ -132,7 +178,7 @@ def upload():
                     falla = "Corresponde"
                 else:
                     falla = ""
-
+                """
                 excel(aep_seleccionado,sistema_seleccionado,folio_seleccionado,vista.folio_input.get(),fecha_seteada,año_seteado,archivo_renombrado,falla)
 
                 vista.folio_input.delete(0,END)
@@ -144,7 +190,8 @@ def upload():
                 vista.combo_anexo.set("")
                 vista.mod_var.checkbox.set(0)
                 vista.mod_var.checkbox_falla.set(0)
-                    
+
+                """    
                 
 
 
